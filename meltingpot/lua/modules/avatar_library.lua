@@ -95,7 +95,7 @@ function Avatar:__init__(kwargs)
       -- `randomizeInitialOrientation` (bool) default True. Avatar orientations
       -- are assigned randomly at the start of each episode. If you instead
       -- set this to false then initial Avatar orientation is always North.
-      {'randomizeInitialOrientation', args.default(true), args.booleanType},
+      {'randomizeInitialOrientation', args.default(false), args.booleanType},
   })
   Avatar.Base.__init__(self, kwargs)
   self._config.kwargs = kwargs
