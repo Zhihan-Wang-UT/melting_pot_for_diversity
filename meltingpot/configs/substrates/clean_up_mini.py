@@ -617,9 +617,12 @@ def create_scene():
           {
               "component": "StochasticIntervalEpisodeEnding",
               "kwargs": {
-                  "minimumFramesPerEpisode": 1000,
+                  "minimumFramesPerEpisode": 700, # original 1000
+                  
                   "intervalLength": 100,  # Set equal to unroll length.
-                  "probabilityTerminationPerInterval": 0.2
+                  "probabilityTerminationPerInterval": 1
+                  # if 1 terminate at minimumFramesPerEpisode
+                  # if 0 terminate at maxEpisodeLengthFrames=5000,
               }
           },
           {
@@ -861,7 +864,8 @@ def build(
       levelDirectory="meltingpot/lua/levels",
       numPlayers=num_players,
       # Define upper bound of episode length since episodes end stochastically.
-      maxEpisodeLengthFrames=5000,
+      maxEpisodeLengthFrames=500,
+    #   maxEpisodeLengthFrames=500, # original 5000
       spriteSize=8,
       topology="BOUNDED",  # Choose from ["BOUNDED", "TORUS"],
       simulation={
